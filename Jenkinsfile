@@ -49,7 +49,7 @@ pipeline {
                 // assumes you added an SSH credential with id 'ec2-ssh' and remote user ubuntu
                 sshagent(['ec2-ssh']) {
                     sh '''
-                      ssh -o StrictHostKeyChecking=no ubuntu@<EC2_PUBLIC_IP> "
+                      ssh -o StrictHostKeyChecking=no ubuntu@65.0.183.133 "
                         docker pull ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO_NAME}:${IMAGE_TAG} &&
                         docker stop flask-container || true &&
                         docker rm flask-container || true &&
